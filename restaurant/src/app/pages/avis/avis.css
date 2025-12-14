@@ -1,0 +1,58 @@
+.avis-container {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #fffaf4;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #d35400;
+}
+
+.avis-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+input, textarea, select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+button {
+  background-color: #e67e22;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #d35400;
+}
+
+.avis-card {
+  background-color: #fff;
+  border-left: 5px solid #e67e22;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.avis-card h3 {
+  margin: 0;
+  color: #333;
+}
+
+.avis-card p {
+  margin: 5px 0;
+}

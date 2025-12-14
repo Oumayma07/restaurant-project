@@ -1,0 +1,31 @@
+ <div class="container mt-5">
+  <div class="card shadow-lg p-4 rounded-4 card-transparent">
+
+    <h2 class="text-center mb-4 text-dark">Connexion</h2>
+    <form (ngSubmit)="onSubmit()" #resForm="ngForm">
+
+      
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label">Votre Email</label>
+        <input type="email" class="form-control rounded-3" name="email" [(ngModel)]="connexion.email" required>
+      </div>
+      <!-- Nom -->
+      <div class="mb-3">
+        <label class="form-label">Votre Mot de Passe:</label>
+        <input type="password" class="form-control rounded-3" name="nom" [(ngModel)]="connexion.mdp" required>
+      </div>
+
+     
+
+      <!-- Bouton -->
+      <div class="text-center">
+        <button type="submit" class="btn btn-dark px-5 py-2 rounded-3 shadow-sm">
+          Envoyer
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+

@@ -1,0 +1,31 @@
+# =====================
+# GLOBAL
+# =====================
+.env
+*.log
+.DS_Store
+
+# =====================
+# ANGULAR (restaurant)
+# =====================
+restaurant/node_modules/
+restaurant/dist/
+restaurant/.angular/
+restaurant/.env
+restaurant/npm-debug.log*
+restaurant/yarn-error.log*
+
+# =====================
+# SPRING BOOT (restaurant-backend)
+# =====================
+restaurant-backend/target/
+restaurant-backend/build/
+restaurant-backend/.env
+restaurant-backend/*.log
+
+# =====================
+# IDE
+# =====================
+.vscode/
+.idea/
+*.iml

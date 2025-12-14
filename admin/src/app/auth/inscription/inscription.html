@@ -1,0 +1,32 @@
+<div class="container mt-5" style="max-width: 450px;">
+  <div class="card p-4 shadow-lg rounded-4">
+
+    <h3 class="text-center mb-4">Créer un compte</h3>
+
+    <form (ngSubmit)="onInscription()" #inscriptionForm="ngForm">
+
+      <div class="mb-3">
+        <label>Nom</label>
+        <input type="text" class="form-control" [(ngModel)]="admin.nom" name="nom" required>
+      </div>
+
+      <div class="mb-3">
+        <label>Email</label>
+        <input type="email" class="form-control" [(ngModel)]="admin.email" name="email" required>
+      </div>
+
+      <div class="mb-3">
+        <label>Mot de passe</label>
+        <input type="password" class="form-control" [(ngModel)]="admin.password" name="password" required>
+      </div>
+
+      <button type="submit" class="btn btn-dark w-100">S’inscrire</button>
+
+      <p class="text-center mt-3">
+        Déjà un compte ?
+        <a routerLink="/login">Se connecter</a>
+      </p>
+
+    </form>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <h2>Liste des Réservations</h2>
+
+  <table class="table table-striped" *ngIf="reservations.length > 0">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Téléphone</th>
+        <th>Nb Personnes</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let res of reservations">
+        <td>{{ res.nom }}</td>
+        <td>{{ res.telephone }}</td>
+        <td>{{ res.nbPersonnes }}</td>
+        <td>{{ res.dateReservation | date:'dd/MM/yyyy' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="reservations.length === 0" class="text-muted">
+    Aucune réservation trouvée.
+  </p>
+</div>

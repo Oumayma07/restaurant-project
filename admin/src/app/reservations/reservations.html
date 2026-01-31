@@ -1,27 +1,51 @@
-<div class="container mt-4">
-  <h2>Liste des Réservations</h2>
+<div class="reservation-page">
 
-  <table class="table table-striped" *ngIf="reservations.length > 0">
-    <thead>
-      <tr>
-        <th>Nom</th>
-        <th>Téléphone</th>
-        <th>Nb Personnes</th>
-        <th>Date</th>
-      </tr>
-    </thead>
+  <h2>🍽 Gestion des Réservations</h2>
 
-    <tbody>
-      <tr *ngFor="let res of reservations">
-        <td>{{ res.nom }}</td>
-        <td>{{ res.telephone }}</td>
-        <td>{{ res.nbPersonnes }}</td>
-        <td>{{ res.dateReservation | date:'dd/MM/yyyy' }}</td>
-      </tr>
-    </tbody>
-  </table>
 
-  <p *ngIf="reservations.length === 0" class="text-muted">
-    Aucune réservation trouvée.
-  </p>
+
+  <!-- Table Card -->
+  <div class="table-card">
+    <table class="table-admin">
+      <thead>
+        <tr>
+          <th>Client</th>
+          <th>Email</th>
+          <th>Personnes</th>
+          <th>Date</th>
+          <th>Heure</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let r of reservations ">
+          <td>
+            <div class="client">
+              <div class="avatar">{{ r.nom[0] }}</div>
+              {{ r.nom }}
+            </div>
+          </td>
+
+          <td>{{ r.email }}</td>
+
+          <td>
+            <span class="badge people">{{ r.nbPersonnes }} pers</span>
+          </td>
+
+          <td>{{ r.dateReservation | date:'dd/MM/yyyy' }}</td>
+
+          <td>
+            <span class="badge time">{{ r.heure || '—' }}</span>
+          </td>
+
+          <td>
+            <button class="btn-delete" (click)="deleteReservation(r.id)">🗑 Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
 </div>

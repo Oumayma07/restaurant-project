@@ -1,105 +1,79 @@
-<div class="menu-container container my-5">
-  <h2 class="text-center mb-4 fw-bold">Notre Menu</h2>
-  <p class="text-muted text-center mb-5">
-    Découvrez nos plats savoureux, préparés avec des ingrédients frais et locaux.
-  </p>
+<div class="menu-page">
 
-  <!-- Entrées -->
-  <section class="mb-5">
-    <h3 class="text-primary mb-3">🥗 Entrées</h3>
-    <div class="scroll-container">
-      <div class="card" *ngFor="let entree of entrees">
-        <img [src]="entree.image" class="card-img-top" alt="{{ entree.nom }}">
-        <div class="card-body text-center">
-          <h5 class="card-title">{{ entree.nom }}</h5>
-          <p class="card-text text-muted">{{ entree.description }}</p>
-          <p class="fw-bold">{{ entree.prix }} DT</p>
+  <!-- Overlay sombre -->
+  <div class="overlay"></div>
+    <!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent">
+  <div class="container">
+    
+    <!-- Logo -->
+    <a class="navbar-brand" routerLink="/home">
+      Ô Délices
+    </a>
+
+    <!-- Burger menu -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+      <ul class="navbar-nav align-items-center gap-3">
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home">Accueil</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/menu">Menu</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/about">À propos</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/avis">Avis</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+
+        <!-- Bouton Réserver -->
+        <li class="nav-item">
+          <button class="btn btn-outline-light px-4" (click)="goToReservation()">
+            Réserver
+          </button>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+  <!-- Header du menu -->
+  <div class="menu-header text-center text-white">
+    <h2 class="fw-bold mb-3">Notre Menu Étoilé</h2>
+    <p class="lead text-white-50 mb-5">Savourez l’expérience culinaire ultime avec nos plats raffinés.</p>
+  </div>
+
+  <!-- Sections du menu -->
+  <ng-container *ngFor="let section of menuSections">
+    <section class="menu-section mb-5" [@sectionAnimation]>
+      <h3 class="section-title text-white mb-4">{{ section.emoji }} {{ section.title }}</h3>
+      <div class="scroll-container d-flex gap-4">
+        <div class="card menu-card" *ngFor="let item of section.items" [@listAnimation]>
+          <div class="card-img-wrapper">
+            <img [src]="item.image" class="card-img-top" alt="{{ item.nom }}">
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ item.nom }}</h5>
+            <p class="card-text text-white-50">{{ item.description }}</p>
+            <p class="fw-bold text-warning">{{ item.prix }} DT</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Plats -->
-  <section class="mb-5">
-    <h3 class="text-primary mb-3">🍝 Plats Principaux</h3>
-    <div class="scroll-container">
-      <div class="card" *ngFor="let plat of plats">
-        <img [src]="plat.image" class="card-img-top" alt="{{ plat.nom }}">
-        <div class="card-body text-center">
-          <h5 class="card-title">{{ plat.nom }}</h5>
-          <p class="card-text text-muted">{{ plat.description }}</p>
-          <p class="fw-bold">{{ plat.prix }} DT</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Desserts -->
-  <section class="mb-5">
-    <h3 class="text-primary mb-3">🍰 Desserts</h3>
-    <div class="scroll-container">
-      <div class="card" *ngFor="let dessert of desserts">
-        <img [src]="dessert.image" class="card-img-top" alt="{{ dessert.nom }}">
-        <div class="card-body text-center">
-          <h5 class="card-title">{{ dessert.nom }}</h5>
-          <p class="card-text text-muted">{{ dessert.description }}</p>
-          <p class="fw-bold">{{ dessert.prix }} DT</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Boissons & Mocktails -->
-  <section class="mb-5">
-    <h3 class="text-primary mb-3">🥤 Boissons & Mocktails</h3>
-    <div class="scroll-container">
-      <div class="card" *ngFor="let boisson of boissons">
-        <img [src]="boisson.image" class="card-img-top" alt="{{ boisson.nom }}">
-        <div class="card-body text-center">
-          <h5 class="card-title">{{ boisson.nom }}</h5>
-          <p class="card-text text-muted">{{ boisson.description }}</p>
-          <p class="fw-bold">{{ boisson.prix }} DT</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </ng-container>
 
 </div>
-
-
-<!-- ===== Footer ===== -->
-<footer class="bg-dark text-white text-center py-4 mt-5">
-  <div class="container">
-    <div class="row">
-      <!-- Liens utiles -->
-      <div class="col-md-4 mb-3 mb-md-0">
-        <h5 class="fw-bold mb-3">Liens utiles</h5>
-        <a routerLink="/menu" class="text-white text-decoration-none d-block mb-2">Menu</a>
-        <a routerLink="/reservation" class="text-white text-decoration-none d-block mb-2">Réservation</a>
-        <a href="/avis" class="text-white text-decoration-none d-block mb-2">Avis</a>
-
-      </div>
-
-      <!-- Adresse -->
-      <div class="col-md-4 mb-3 mb-md-0">
-        <h5 class="fw-bold mb-3">Nous Trouver</h5>
-        <p class="mb-1">📍 Avenue Habib Bourguiba, Tunis</p>
-        <p class="mb-1">📞 +216 55 123 456</p>
-        <p>📧 contact@odelices.tn</p>
-      </div>
-
-      <!-- Réseaux sociaux -->
-      <div class="col-md-4">
-        <h5 class="fw-bold mb-3">Suivez-nous</h5>
-        Facebook: <a href="ôDelicesOfficielle" class="text-white text-decoration-none mx-2">ôDelicesOfficielle<i class="bi bi-facebook"></i></a><br>
-        Instagram: <a href="ôDelicesOfficielle" class="text-white text-decoration-none mx-2">ôDelicesOfficielle<i class="bi bi-instagram"></i></a>
-      </div>
-    </div>
-
-    <hr class="bg-light my-4">
-
-    <p class="mb-0 small">
-      © 2025 <strong>Ô Délices</strong> — Tous droits réservés 🍷
-    </p>
-  </div>
-</footer>

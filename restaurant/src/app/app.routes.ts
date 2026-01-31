@@ -1,29 +1,27 @@
-import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
-
 import { HomeComponent } from './pages/home/home';
 import { MenuComponent } from './pages/menu/menu';
 import { ReservationComponent } from './pages/reservation/reservation';
-import { AvisComponent } from './pages/avis/avis';
 import { LoginComponent } from './auth/login/login';
 import { InscriptionComponent } from './auth/inscription/inscription';
 import { AuthGuard } from './auth/auth.guard';
-
+import { NgModule } from '@angular/core';
+import { About } from './pages/about/about';
+import { Contact } from './pages/contact/contact';
+import { Avis } from './pages/avis/avis';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'menu', component: MenuComponent },
   { path: 'reservation', component: ReservationComponent, canActivate: [AuthGuard] },
-  { path: 'avis', component: AvisComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'inscription', component: InscriptionComponent },
-  { path: '**', redirectTo: 'home' }
+  { path: 'avis', component: Avis },
+  { path: 'auth/login', component: LoginComponent },
+  { path: 'auth/inscription', component: InscriptionComponent },
+  { path: 'about', component:About},
+  { path: 'contact', component:Contact},
+
+  { path: '**', redirectTo: '' }
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes), HttpClientModule],
-  exports: [RouterModule]
-})
-export class AppRoutingModule {}
+

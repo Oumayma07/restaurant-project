@@ -1,0 +1,138 @@
+<!-- HERO CONTACT -->
+<section class="contact-hero">
+  <div class="overlay"></div>
+
+  <nav class="navbar navbar-expand-lg fixed-top navbar-transparent">
+  <div class="container">
+
+    <!-- Logo -->
+    <a class="navbar-brand" routerLink="/home">
+      Ô Délices
+    </a>
+
+    <!-- Burger menu -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+      <ul class="navbar-nav align-items-center gap-3">
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home">Accueil</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/menu">Menu</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/about">À propos</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/avis">Avis</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+
+        <!-- Bouton Réserver -->
+        <li class="nav-item">
+          <button class="btn btn-outline-light px-4" (click)="goToReservation()">
+            Réserver
+          </button>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+  <div class="hero-content text-center">
+    <h1>Contactez-nous</h1>
+    <p>Nous sommes ravis d’échanger avec vous</p>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section container my-5">
+  <div class="row g-5 align-items-stretch">
+
+    <!-- INFOS -->
+    <div class="col-md-5">
+      <div class="contact-info shadow-lg">
+        <h3>Ô Délices</h3>
+        <p class="text-muted mb-4">
+          Une expérience gastronomique raffinée au cœur de Tunis.
+        </p>
+
+        <ul class="list-unstyled">
+          <li>📍 Avenue Habib Bourguiba, Tunis</li>
+          <li>📞 +216 55 123 456</li>
+          <li>📧 contact@odelices.tn</li>
+          <li>⏰ Lun – Dim : 12h00 – 23h00</li>
+        </ul>
+
+        <div class="socials mt-4">
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORMULAIRE -->
+    <div class="col-md-7">
+      <div class="contact-form shadow-lg">
+        <h3 class="mb-4">Envoyez-nous un message</h3>
+
+        <div *ngIf="submitted" class="alert" [ngClass]="{'alert-success': success, 'alert-danger': error}">
+    {{ success ? '✅ Message envoyé avec succès !' : '❌ Erreur lors de l’envoi.' }}
+  </div>
+
+        <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+
+    <input type="text" class="form-control mb-3" placeholder="Nom complet"
+      [(ngModel)]="contact.name" name="name" required>
+
+    <input type="email" class="form-control mb-3" placeholder="Email"
+      [(ngModel)]="contact.email" name="email" required>
+
+    <select class="form-select mb-3" [(ngModel)]="contact.type" name="type">
+      <option value="AVIS">Avis</option>
+      <option value="RECLAMATION">Réclamation</option>
+      <option value="CONTACT">Contact</option>
+    </select>
+
+    <div *ngIf="contact.type === 'AVIS'" class="mb-3">
+      <label>Note : </label>
+      <select class="form-select" [(ngModel)]="contact.rating" name="rating">
+        <option [value]="1">⭐</option>
+        <option [value]="2">⭐⭐</option>
+        <option [value]="3">⭐⭐⭐</option>
+        <option [value]="4">⭐⭐⭐⭐</option>
+        <option [value]="5">⭐⭐⭐⭐⭐</option>
+      </select>
+    </div>
+
+    <textarea class="form-control mb-3" rows="5" placeholder="Votre message..."
+      [(ngModel)]="contact.message" name="message" required></textarea>
+
+    <button class="btn btn-dark px-4 py-2" type="submit">Envoyer</button>
+  </form>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-section">
+  <iframe
+    src="https://maps.google.com/maps?q=avenue%20habib%20bourguiba%20tunis&t=&z=15&ie=UTF8&iwloc=&output=embed"
+    loading="lazy">
+  </iframe>
+</section>

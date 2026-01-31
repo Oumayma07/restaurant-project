@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/reservations")
-@CrossOrigin(origins = "http://localhost:4200") 
+@CrossOrigin(origins = "*") 
 public class ReservationController {
 
     private final ReservationService reservationService;
@@ -29,8 +29,11 @@ public class ReservationController {
         return reservationService.getAllReservations();
 }
 
+@GetMapping("/disponibilite")
+    public int getDisponibilite(@RequestParam String date) {
+        return reservationService.getDisponibilite(date);
+    }
 
-    
 
     // Mettre à jour une réservation
     @PutMapping("/{id}")

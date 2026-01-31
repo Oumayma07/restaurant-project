@@ -1,57 +1,106 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate, query, stagger
+} from '@angular/animations';
+import { Router,RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.html',
   styleUrl: './menu.css',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterLink],
+  animations: [
+    // Animation des cartes
+    trigger('listAnimation', [
+      transition(':enter', [
+        query('.menu-card', [
+          style({ opacity: 0, transform: 'translateY(50px)' }),
+          stagger(150, [
+            animate('700ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
+          ])
+        ], { optional: true })
+      ])
+    ]),
+    // Animation fade/slide pour sections
+    trigger('sectionAnimation', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(30px)' }),
+        animate('800ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
+      ])
+    ])
+  ]
 })
+
 export class MenuComponent {
-entrees = [
-  { nom: 'Salade Méditerranéenne', description: 'Fraîcheur', prix: 12, image: 'assets/images/salademed.jpg' },
-  { nom: 'Bruschetta', description: 'Pain grillé', prix: 10, image: 'assets/images/bruschetta.jfif' },
-  { nom: 'Soupe de lentille', description: 'Préparée selon la saison', prix: 9, image: 'assets/images/soupelentille.webp' },
-  { nom: 'Salade césare', description: 'Préparée selon la saison', prix: 9, image: 'assets/images/saladecesar.jpg' },
-  { nom: 'Brick au thon croustillant', description: 'Préparée selon la saison', prix: 7.5, image: 'assets/images/brikthon.jpg' },
-  { nom: 'Salade Mechouia grillée traditionnelle', description: 'Préparée selon la saison', prix: 5, image: 'assets/images/mechwiya.jfif' },
-  { nom: 'Mini pizza', description: 'Préparée selon la saison', prix: 6.5, image: 'assets/images/minipizza.jpg' },
-  { nom: 'Mini soufflet ', description: 'Préparée selon la saison', prix: 5, image: 'assets/images/souffle.jpg' },
-  
-];
 
-
-  plats = [
-    { nom: 'Pâtes Carbonara', description: 'Crème, œuf, pancetta et parmesan.', prix: 22, image: 'assets/images/carbonara.jfif' },
-    { nom: 'Lasagne', description: 'Pâtes, viande et béchamel, gratinées au fromage.', prix: 45, image: 'assets/images/lasagne.jfif' },
-    { nom: 'Steak Grillé', description: 'Servi avec frites maison et sauce au poivre.', prix: 35, image: 'assets/images/steak.jpg' },
-    { nom: 'Poulet Rôti', description: 'Mariné aux herbes, accompagné de légumes.', prix: 28, image: 'assets/images/poulet.jpeg' },
-    { nom: 'Kouskous au poisson', description: 'Kouskous traditionelle', prix: 25, image: 'assets/images/kouskouspoisson.webp' },
-    { nom: 'Kouskous au poulet', description: 'Préparée selon la saison.', prix: 20, image: 'assets/images/kosksi.jpg' }
+  menuSections = [
+    {
+      title: 'Entrées',
+      emoji: '🥗',
+      items: [
+        { nom: 'Salade César', description: 'Salade avec poulet grillé', prix: 12, image: '/assets/images/saladecesar.jpg', state: 'hidden' },
+        { nom: 'Salade Méditeranée', description: 'Salade méditerané', prix: 14, image: '/assets/images/salademed.jpg', state: 'hidden' },
+        { nom: 'Bruschetta', description: 'Pain grillé, tomates et basilic', prix: 8, image: '/assets/images/bruschetta.jfif', state: 'hidden' },
+        { nom: 'Brik', description: 'Brik au Thon', prix: 5, image: '/assets/images/brikthon.jpg', state: 'hidden' },
+        { nom: 'Soufflé', description: 'Soufflée au Viande hachée', prix: 7, image: '/assets/images/souffle.jpg', state: 'hidden' },
+        { nom: 'Soupe', description: 'Soupe Lentille', prix: 7, image: '/assets/images/soupelentille.webp', state: 'hidden' },
+      ]
+    },
+    {
+      title: 'Plats Principaux',
+      emoji: '🍝',
+      items: [
+        { nom: 'Spaghetti Bolognese', description: 'Pâtes à la sauce tomate et viande', prix: 20, image: '/assets/images/pastaa.jfif', state: 'hidden' },
+        { nom: 'Couscous Tunisien', description: 'Plat traditionnel', prix: 18, image: '/assets/images/couscous.jpg', state: 'hidden' },
+        { nom: 'Lasagne', description: 'Lasagne au viande hachée', prix: 17, image: '/assets/images/lasagne.jfif', state: 'hidden' },
+        { nom: 'Pattes sauce blanche', description: 'Pâtes à la sauce blanche et fromage', prix: 25, image: '/assets/images/sauceblanche.avif', state: 'hidden' },
+        { nom: 'Ojja', description: 'Ojja au fruit de mer', prix: 15, image: '/assets/images/ojja.jpg', state: 'hidden' },
+        { nom: 'Riz', description: 'Riz au poulet et légumes', prix: 20, image: '/assets/images/riz.jpg', state: 'hidden' }
+      ]
+    },
+    {
+      title: 'Desserts',
+      emoji: '🍰',
+      items: [
+        { nom: 'Tiramisu', description: 'Dessert italien', prix: 10, image: '/assets/images/tiramisu.jpg', state: 'hidden' },
+        { nom: 'Cheesecake', description: 'Gâteau au fromage', prix: 11, image: '/assets/images/cheesecake.jpg', state: 'hidden' },
+        { nom: 'Fondant', description: 'Fondant au chocolat', prix: 9, image: '/assets/images/fondant.jpg', state: 'hidden' },
+        { nom: 'Glace', description: 'Glace au choix', prix: 4, image: '/assets/images/glace.webp', state: 'hidden' },
+        { nom: 'Gateau', description: 'Gâteau au choix', prix: 7, image: '/assets/images/gateau.jfif', state: 'hidden' },
+        { nom: 'Crépes', description: 'Crépes au choix', prix: 15, image: '/assets/images/crepe.jpg', state: 'hidden' }
+      ]
+    },
+    {
+      title: 'Boissons & Mocktails',
+      emoji: '🥤',
+      items: [
+        { nom: 'Limonade', description: 'Boisson rafraîchissante', prix: 5, image: '/assets/images/limonade.jpg', state: 'hidden' },
+        { nom: 'Mojito Sans Alcool', description: 'Mocktail menthe citron', prix: 7, image: '/assets/images/mojitobleu.jpg', state: 'hidden' },
+        { nom: 'Eau', description: 'Eau minérale 1L', prix: 2.5, image: '/assets/images/eau.jpg', state: 'hidden' },
+        { nom: 'MilkShake', description: 'MilkShake au choix', prix: 14, image: '/assets/images/milk.jpg', state: 'hidden' },
+        { nom: 'Jus', description: 'Jus au choix', prix: 8, image: '/assets/images/cocktail.jpg', state: 'hidden' },
+        { nom: 'Cocktail', description: 'Cocktail au fruit frais', prix: 12, image: '/assets/images/cock.webp', state: 'hidden' }
+      ]
+    }
   ];
 
-  desserts = [
-    { nom: 'Tiramisu', description: 'Crème mascarpone légère, café intense et cacao.', prix: 14, image: 'assets/images/tiramisu.jpg' },
-    { nom: 'Crème Brûlée', description: 'Caramélisée à la perfection.', prix: 13, image: 'assets/images/Vanilla-Creme-Brulee.avif' },
-    { nom: 'Fondant au Chocolat', description: 'Cœur coulant et boule de glace.', prix: 15, image: 'assets/images/fondant.jpg' },
-    { nom: 'Glace aux choix', description : 'Des boules de glaces à vos choix', prix: 4, image: 'assets/images/glace.webp'},
-    { nom: 'Cheesecake', description : 'Garniture crémeuse et coulis de fruits rouges maison.', prix: 10, image: 'assets/images/cheesecake.jpg'},
-    { nom: 'Gateau au choix', description : 'Gâteau au choix', prix: 7, image: 'assets/images/gateau.jfif'},
-    { nom: 'Millefeuille', description : 'Crème patissiére, couches feuilletées et finition cacao.', prix: 3.5, image: 'assets/images/millefeuille.webp'},
+  constructor( private router: Router) {}
 
-  ];
-  boissons = [
-
-  { nom: 'Mojito bleu (sans alcool)', description: 'Citron, menthe fraîche, eau gazeuse', prix: 12, image: 'assets/images/mojitobleu.jpg' },
-  { nom: 'Mojito Fraise (sans alcool)', description: 'Citron, menthe fraîche, fraise, eau gazeuse', prix: 12, image: 'assets/images/mojitofraise.webp' },
-  { nom: 'Jus d’orange pressé', description: '100% naturel', prix: 8, image: 'assets/images/jusorange.jpg' },
-  { nom: 'Jus de fraise', description: '100% naturel', prix: 9, image: 'assets/images/jusfraise.webp' },
-  { nom: 'Milkshake vanille', description: 'Crémeux et gourmand', prix: 10, image: 'assets/images/milkshake.jfif' },
-  { nom: 'Cocktail fruité', description: 'Mélange maison exotique', prix: 14, image: 'assets/images/cocktail.jpg' },
-  { nom: 'Eau 1L', description: 'Eau minerale', prix: 3, image: 'assets/images/eau.jpg' },
-];
-
-
+  goToReservation() {
+  const token = localStorage.getItem('token'); // vérifie si l'utilisateur est connecté
+  if (!token) {
+    // Redirection vers login si pas connecté
+    this.router.navigate(['/auth/login']);
+  } else {
+    // Sinon vers la page réservation
+    this.router.navigate(['/reservation']);
+  }}
 }
+

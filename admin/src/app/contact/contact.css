@@ -1,0 +1,65 @@
+.admin-page {
+  background: #0f172a;
+  padding: 25px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.table-card {
+  background: #020617;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  margin-bottom: 25px;
+}
+
+.table-card.danger {
+  border-left: 4px solid red;
+}
+
+.table-card h3 {
+  color: gold;
+  margin-bottom: 10px;
+}
+
+/* TABLE */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th {
+  color: #94a3b8;
+  font-size: 13px;
+  padding: 10px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.admin-table td {
+  padding: 10px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.msg {
+  max-width: 350px;
+  color: #cbd5f5;
+}
+
+/* BUTTON */
+.btn-delete {
+  background: #dc2626;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background: #b91c1c;
+}

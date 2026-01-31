@@ -1,58 +1,121 @@
-.avis-container {
-  max-width: 700px;
-  margin: 30px auto;
-  padding: 20px;
-  border-radius: 15px;
-  background-color: #fffaf4;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-h2 {
+.reviews-section {
+  padding: 80px 20px;
+  background: url('/assets/images/hero1.jpg') center/cover no-repeat;
   text-align: center;
-  color: #d35400;
+}
+/* Navbar transparente */
+.navbar-transparent {
+  background: rgba(0, 0, 0, 0.644);
+  backdrop-filter: blur(8px);
+  transition: background 0.3s ease;
 }
 
-.avis-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 30px;
+/* Logo */
+.navbar-brand {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #fff !important;
+  letter-spacing: 1px;
 }
 
-input, textarea, select {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 15px;
+/* Liens */
+.nav-link {
+  color: #fff !important;
+  font-weight: 500;
+  position: relative;
 }
 
-button {
-  background-color: #e67e22;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+/* Effet underline hover */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: width 0.3s;
 }
 
-button:hover {
-  background-color: #d35400;
+.nav-link:hover::after {
+  width: 100%;
 }
 
-.avis-card {
-  background-color: #fff;
-  border-left: 5px solid #e67e22;
-  padding: 15px;
+/* Bouton réserver */
+.navbar .btn-outline-light {
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+/* Fix hero overlap */
+.hero-section {
+  padding-top: 100px;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: bold;
   margin-bottom: 10px;
-  border-radius: 10px;
+  color: #fff;
 }
 
-.avis-card h3 {
-  margin: 0;
+.section-subtitle {
+  color: #fbfcfc;
+  margin-bottom: 50px;
+  font-size: 16px;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.review-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-10px);
+}
+
+.stars {
+  color: #ffc107;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.review-text {
+  font-size: 15px;
   color: #333;
+  margin-bottom: 25px;
+  line-height: 1.6;
 }
 
-.avis-card p {
-  margin: 5px 0;
+.review-user {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-align: left;
+}
+
+.review-user img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.review-user h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.review-user span {
+  font-size: 13px;
+  color: #6c757d;
 }

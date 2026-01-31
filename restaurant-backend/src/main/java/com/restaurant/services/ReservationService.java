@@ -30,14 +30,27 @@ public class ReservationService {
     public Optional<Reservation> getReservationById(String id) {
         return reservationRepository.findById(id);
     }
+    // 🔹 Retourne toutes les réservations pour une date donnée
+    public List<Reservation> getReservationsByDate(String date) {
+        return reservationRepository.findByDateReservationStartingWith(date);
+    }
+
+    // 🔹 Calculer la disponibilité pour une date
+    public int getDisponibilite(String date) {
+        int totalPlaces = 50; // capacité totale du restaurant
+        List<Reservation> reservations = getReservationsByDate(date);
+        int placesReservees = reservations.stream().mapToInt(Reservation::getNbPersonnes).sum();
+        return totalPlaces - placesReservees;
+    }
 
     // Mettre à jour une réservation
     public Reservation updateReservation(String id, Reservation reservationDetails) {
         return reservationRepository.findById(id).map(reservation -> {
             reservation.setNom(reservationDetails.getNom());
-            reservation.setTelephone(reservationDetails.getTelephone());
+            reservation.setEmail(reservationDetails.getEmail());
             reservation.setNbPersonnes(reservationDetails.getNbPersonnes());
             reservation.setDateReservation(reservationDetails.getDateReservation());
+            reservation.setHeure(reservationDetails.getHeure());
             return reservationRepository.save(reservation);
         }).orElseThrow(() -> new RuntimeException("Réservation non trouvée avec l'id " + id));
     }

@@ -1,0 +1,60 @@
+<div class="avis-page">
+
+  <h2>⭐ Gestion des Avis Clients</h2>
+
+
+  <!-- Table Card -->
+  <div class="table-card">
+
+    <table class="table-admin">
+      <thead>
+        <tr>
+          <th>Client</th>
+          <th>Note</th>
+          <th>Message</th>
+          <th>Statut</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let a of avisList ">
+
+          <!-- Client -->
+          <td>
+            <div class="client">
+              <div class="avatar">{{ a.name[0] }}</div>
+              {{ a.name }}
+            </div>
+          </td>
+
+          <!-- Rating -->
+          <td>
+            <span class="stars">
+              ⭐ {{ a.rating }}/5
+            </span>
+          </td>
+
+          <!-- Message -->
+          <td class="message">
+            {{ a.message }}
+          </td>
+
+          <!-- Status -->
+          <td>
+            <span *ngIf="a.approved" class="status approved">Approuvé</span>
+            <span *ngIf="!a.approved" class="status pending">En attente</span>
+          </td>
+
+          <!-- Actions -->
+          <td class="actions">
+            <button *ngIf="!a.approved" class="btn-approve" (click)="approve(a.id)">✔ Approuver</button>
+            <button class="btn-delete" (click)="delete(a.id)">🗑 Supprimer</button>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

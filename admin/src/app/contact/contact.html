@@ -1,0 +1,62 @@
+<div class="admin-page">
+
+  <h2>📩 Contacts & Réclamations</h2>
+
+  <!-- CONTACTS -->
+  <div class="table-card">
+    <h3>📬 Messages Contact</h3>
+
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Email</th>
+          <th>Message</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let c of ContactList">
+          <td>{{ c.name }}</td>
+          <td>{{ c.email }}</td>
+          <td class="msg">{{ c.message }}</td>
+          <td>
+            <button class="btn-delete" (click)="delete(c.id)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- RÉCLAMATIONS -->
+  <div class="table-card danger">
+    <h3>🚨 Réclamations Clients</h3>
+
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Email</th>
+          <th>Message</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let r of reclamationList">
+          <td>{{ r.name }}</td>
+          <td>{{ r.email }}</td>
+          <td class="msg">{{ r.message }}</td>
+          
+          <td>
+            <button class="btn-delete" (click)="delete(r.id)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>

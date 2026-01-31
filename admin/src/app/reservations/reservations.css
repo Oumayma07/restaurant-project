@@ -1,1 +1,110 @@
-.card { background: #fff; border-radius: 6px; box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
+.reservation-page {
+  background: #0f172a;
+  padding: 25px;
+  color: white;
+  font-family: Poppins, sans-serif;
+}
+
+.reservation-page h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+/* Toolbar */
+.toolbar {
+  margin-bottom: 15px;
+}
+
+.toolbar input {
+  width: 300px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #020617;
+  color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+/* Table Card */
+.table-card {
+  background: rgba(2,6,23,0.9);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* Table */
+.table-admin {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-admin th {
+  text-align: left;
+  padding: 12px;
+  font-size: 13px;
+  color: #94a3b8;
+  border-bottom: 1px solid #1e293b;
+}
+
+.table-admin td {
+  padding: 12px;
+  border-bottom: 1px solid #1e293b;
+  font-size: 14px;
+}
+
+.table-admin tr:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+/* Client */
+.client {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+  background: gold;
+  color: black;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Badges */
+.badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.people {
+  background: #2563eb;
+}
+
+.time {
+  background: #16a34a;
+}
+
+/* Buttons */
+.btn-delete {
+  background: #dc2626;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-delete:hover {
+  background: #b91c1c;
+  transform: scale(1.05);
+}

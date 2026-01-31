@@ -1,24 +1,74 @@
-<div class="avis-container">
-  <h2>Les avis de nos clients</h2>
+<section class="reviews-section">
+   <!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent">
+  <div class="container">
 
-  <div class="avis-form">
-    <input [(ngModel)]="newAvis.nom" type="text" placeholder="Votre nom">
+    <!-- Logo -->
+    <a class="navbar-brand" routerLink="/home">
+      Ô Délices
+    </a>
 
-    <select [(ngModel)]="newAvis.note">
-      <option value="0" disabled selected>Note</option>
-      <option *ngFor="let n of [1,2,3,4,5]" [value]="n">{{n}} ⭐</option>
-    </select>
+    <!-- Burger menu -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <textarea [(ngModel)]="newAvis.commentaire" placeholder="Votre commentaire..."></textarea>
+    <!-- Links -->
+    <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+      <ul class="navbar-nav align-items-center gap-3">
 
-    <button (click)="ajouterAvis()">Envoyer</button>
-  </div>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home">Accueil</a>
+        </li>
 
-  <div class="avis-list">
-    <div class="avis-card" *ngFor="let avis of avisList">
-      <h3>{{avis.nom}} <span>({{avis.note}} ⭐)</span></h3>
-      <p>{{avis.commentaire}}</p>
-      <small>{{avis.date | date:'medium'}}</small>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/menu">Menu</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/about">À propos</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/avis">Avis</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+
+        <!-- Bouton Réserver -->
+        <li class="nav-item">
+          <button class="btn btn-outline-light px-4" (click)="goToReservation()">
+            Réserver
+          </button>
+        </li>
+
+      </ul>
     </div>
   </div>
+</nav>
+  <div class="container">
+
+    <h2 class="section-title">Ce que disent nos clients</h2>
+    <p class="section-subtitle">
+      Votre satisfaction est notre priorité ⭐
+    </p>
+
+    <div class="reviews-grid">
+
+      <div class="row g-4">
+    <div class="col-md-4" *ngFor="let avis of avisList">
+  <div class="card shadow-sm p-3">
+    <h5>{{ avis.name }}</h5>
+    <div *ngIf="avis.rating">
+      ⭐{{ avis.rating }}
+    </div>
+    <p>{{ avis.message }}</p>
+  </div>
 </div>
+  </div>
+
+    </div>
+  </div>
+</section>

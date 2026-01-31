@@ -1,34 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReservationService } from '../services/reservation.service';
-import { Reservation } from '../models/reservation.model';
+import { Reservation, ReservationService } from '../services/reservation.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-reservations',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './reservations.html',
   styleUrls: ['./reservations.css']
 })
 export class ReservationsComponent implements OnInit {
 
   reservations: Reservation[] = [];
+  error = false;
 
-  constructor(private reservationService: ReservationService) {}
+  constructor(private reservationService: ReservationService, private cdr: ChangeDetectorRef) {}
 
-  ngOnInit(): void {
-    this.chargerReservations();
+  ngOnInit() {
+    this.loadReservations();
   }
 
-  chargerReservations() {
-    this.reservationService.getAllReservations().subscribe(
-      data => {
-        this.reservations = data;
-        console.log("Données reçues :", data); // Vérifie que les données arrivent
-      },
-      error => {
-        console.error("Erreur de chargement :", error);
-      }
-    );
+  loadReservations() {
+    this.reservationService.getAllReservations().subscribe({
+      next: (data) => {
+      console.log("reservation backend=",data);
+      this.reservations = data;
+      this.cdr.detectChanges();
+    },
+    error: (err) => console.error("error",err)
+  });
+   
   }
+
+  deleteReservation(id: string) {
+    if (!id) return;
+    if (confirm('Supprimer cette réservation ?')) {
+      this.reservationService.deleteReservation(id).subscribe(() => this.loadReservations());
+    }
+  }
+
+  
 }

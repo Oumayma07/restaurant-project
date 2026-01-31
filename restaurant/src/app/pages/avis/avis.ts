@@ -1,40 +1,40 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, DatePipe } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
 
+import { Contact, ContactService } from '../../services/contact.service';
 
-export interface Avis {
-  nom: string;
-  note: number;
-  commentaire: string;
-  date: Date;
-}
 
 @Component({
   selector: 'app-avis',
   standalone: true,
   templateUrl: './avis.html',
   styleUrl: './avis.css',
-  imports: [FormsModule, DatePipe, CommonModule],
+  imports: [FormsModule, RouterLink, CommonModule],
 })
 
-export class AvisComponent {
+export class Avis {
+avisList: Contact[] = [];
 
-  avisList: Avis[] = [
-    { nom: 'Sami', note: 5, commentaire: 'Excellent service et plats délicieux !', date: new Date() },
-    { nom: 'Leila', note: 4, commentaire: 'Très bon restaurant, juste un peu d’attente.', date: new Date() }
-  ];
+  constructor(private contactService: ContactService,private router: Router) {}
 
-  newAvis: Avis = { nom: '', note: 0, commentaire: '', date: new Date() };
 
-  ajouterAvis() {
-    if (this.newAvis.nom && this.newAvis.note && this.newAvis.commentaire) {
-      this.newAvis.date = new Date();
-      this.avisList.unshift({ ...this.newAvis });
-      this.newAvis = { nom: '', note: 0, commentaire: '', date: new Date() };
-      alert('Merci pour votre avis ! 😊');
+  ngOnInit(): void {
+    this.contactService.getApprovedAvis().subscribe({
+      next: (data) => this.avisList = data,
+      error: (err) => console.error('Erreur lors du chargement des avis', err)
+    });
+  }
+
+     goToReservation() {
+    const token = localStorage.getItem('token'); // vérifie si l'utilisateur est connecté
+    if (!token) {
+      // Redirection vers login si pas connecté
+      this.router.navigate(['/auth/login']);
     } else {
-      alert('Veuillez remplir tous les champs.');
+      // Sinon vers la page réservation
+      this.router.navigate(['/reservation']);
     }
   }
 

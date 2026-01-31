@@ -10,9 +10,11 @@ public class Reservation {
     @Id
     private String id;
     private String nom;
-    private String telephone;
-    private int nbPersonnes;
+    private String email;
     private  String dateReservation;
+    private String heure;
+    private int nbPersonnes;
+    
 
     // Constructeur vide obligatoire
     public Reservation() {}
@@ -34,12 +36,12 @@ public class Reservation {
         this.nom = nom;
     }
 
-    public String getTelephone() {
-        return telephone;
+    public String getEmail() {
+        return email;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getNbPersonnes() {
@@ -57,4 +59,13 @@ public class Reservation {
     public void setDateReservation(String dateReservation) {
         this.dateReservation = dateReservation;
     }
+
+    public String getHeure() {
+        return heure;
+    }
+
+    public void setHeure(String heure) {
+        this.heure = heure;
+    }
+
 }

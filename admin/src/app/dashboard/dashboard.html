@@ -1,0 +1,89 @@
+<div class="dashboard">
+
+  <!-- Header -->
+  <div class="dashboard-header">
+    <h2>Admin Dashboard</h2>
+    <p>Gestion du restaurant en temps réel</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+
+    <div class="stat-card stat-blue">
+      <span>🍽</span>
+      <div>
+        <h4>Réservations</h4>
+        <p>{{ totalReservations }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card stat-orange">
+      <span>⭐</span>
+      <div>
+        <h4>Total Avis</h4>
+        <p>{{ totalAvis }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card stat-red">
+      <span>⏳</span>
+      <div>
+        <h4>Avis en attente</h4>
+        <p>{{ pendingAvis }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card stat-green">
+      <span>✅</span>
+      <div>
+        <h4>Avis approuvés</h4>
+        <p>{{ approvedAvis }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card stat-purple">
+      <span>📩</span>
+      <div>
+        <h4>Contacts</h4>
+        <p>{{ totalContacts }}</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="admin-actions">
+    <h3>Gestion rapide</h3>
+
+    <div class="actions-grid">
+
+      <div class="action-card" routerLink="/reservations">
+        🍽
+        <h4>Réservations</h4>
+        <p>Voir et supprimer les réservations</p>
+      </div>
+
+      <div class="action-card" routerLink="/avis">
+        ⭐
+        <h4>Avis clients</h4>
+        <p>Approuver ou supprimer les avis</p>
+      </div>
+
+      <div class="action-card" routerLink="/contact">
+        📩
+        <h4>Contacts & Réclamations</h4>
+        <p>Consulter les messages clients</p>
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <!-- CHART -->
+  <div class="chart-card">
+    <h3>📈 Réservations par jour</h3>
+    <canvas id="reservationChart"></canvas>
+  </div>
+
+</div>

@@ -1,4 +1,115 @@
-.card-transparent {
-    background-color: rgba(182, 90, 90, 0.63); /* gris transparent */
+/* Page réservation avec background restaurant premium */
+.reservation-page {
+  position: relative;
+  background: url('/assets/images/hero1.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 15px;
+}
 
-  }
+/* Overlay sombre */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 1;
+}
+
+/* Navbar transparente */
+.navbar-transparent {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  transition: background 0.3s ease;
+}
+
+/* Logo */
+.navbar-brand {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #fff !important;
+  letter-spacing: 1px;
+}
+
+/* Liens */
+.nav-link {
+  color: #fff !important;
+  font-weight: 500;
+  position: relative;
+}
+
+/* Effet underline hover */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+
+/* Carte réservation */
+.reservation-card {
+  position: relative;
+  z-index: 2;
+  background: rgba(30,30,30,0.85);
+  color: white;
+  max-width: 500px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 40px 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.reservation-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+}
+
+/* Bouton premium */
+.btn-reservation {
+  background: #32394b;
+  color: white;
+  font-weight: 600;
+  border-radius: 50px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+.btn-reservation:hover {
+  background: #ff8775;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.available {
+  color: green;
+  font-weight: bold;
+}
+
+.full {
+  color: red;
+  font-weight: bold;
+}
+
+
+/* Form labels */
+.form-label {
+  font-weight: 500;
+}
+
+/* Input focus */
+.form-control:focus {
+  border-color: #ff6f61;
+  box-shadow: 0 0 0 0.2rem rgba(255,111,97,0.25);
+}

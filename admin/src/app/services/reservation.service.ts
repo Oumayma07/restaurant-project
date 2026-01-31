@@ -2,8 +2,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Reservation } from '../models/reservation.model';   // ✅ importer le modèle !
 
+export interface Reservation {
+  id: string;
+  nom: string;
+  email: string;
+  nbPersonnes: number;
+  dateReservation: string;
+  heure:string; // ISO string
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +20,11 @@ export class ReservationService {
 
   constructor(private http: HttpClient) {}
 
-  getAllReservations(): Observable<Reservation[]> {     // ✅ retourne une liste de Reservation
+  getAllReservations(): Observable<Reservation[]> {
     return this.http.get<Reservation[]>(this.apiUrl);
+  }
+
+  deleteReservation(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

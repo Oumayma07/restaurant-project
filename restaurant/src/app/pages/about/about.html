@@ -1,0 +1,117 @@
+<!-- HERO ABOUT -->
+<section class="about-hero">
+
+  <div class="overlay"></div>
+  <nav class="navbar navbar-expand-lg fixed-top navbar-transparent">
+  <div class="container">
+    
+    <!-- Logo -->
+    <a class="navbar-brand" routerLink="/home">
+      Ô Délices
+    </a>
+
+    <!-- Burger menu -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+      <ul class="navbar-nav align-items-center gap-3">
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home">Accueil</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/menu">Menu</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/about">À propos</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/avis">Avis</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+
+        <!-- Bouton Réserver -->
+        <li class="nav-item">
+          <button class="btn btn-outline-light px-4" (click)="goToReservation()">
+            Réserver
+          </button>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+  <div class="about-hero-content">
+    <h1>À propos de Ô Délices</h1>
+    <p>L’élégance culinaire au service de l’émotion</p>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="about-section container">
+  <div class="row align-items-center">
+    <div class="col-md-6">
+      <h2>Notre Histoire</h2>
+      <p>
+        Fondé par des passionnés de gastronomie, <strong>Ô Délices</strong> est
+        né d’un rêve : offrir une expérience culinaire raffinée, où chaque plat
+        raconte une histoire.
+      </p>
+      <p>
+        Nous sélectionnons des produits frais, travaillons des recettes
+        authentiques et sublimons chaque détail pour créer un moment inoubliable.
+      </p>
+    </div>
+    <div class="col-md-6">
+      <img src="/assets/images/about-story.jpg" alt="Restaurant" class="img-fluid rounded-4 shadow">
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+  <div class="container text-center">
+    <h2>Nos Valeurs</h2>
+
+    <div class="row mt-5">
+      <div class="col-md-4">
+        <div class="value-card">
+          <h4>🍃 Qualité</h4>
+          <p>Des ingrédients soigneusement sélectionnés, toujours frais.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="value-card">
+          <h4>👨‍🍳 Passion</h4>
+          <p>Une équipe animée par l’amour du goût et du détail.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="value-card">
+          <h4>✨ Excellence</h4>
+          <p>Un service élégant et une expérience mémorable.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="about-cta text-center">
+  <h2>Vivez l’expérience Ô Délices</h2>
+  <p>Réservez votre table et laissez-vous surprendre</p>
+  <button class="btn btn-dark btn-lg" routerLink="/reservation">
+    Réserver maintenant
+  </button>
+</section>

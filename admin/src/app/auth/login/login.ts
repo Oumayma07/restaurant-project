@@ -25,7 +25,7 @@ export class Login {
       next: (res: any) => {
         localStorage.setItem('token', res.token);
         alert("Connexion réussie !");
-        this.router.navigate(['/reservations']);
+        this.router.navigate(['/dashboard']);
       },
       error: () => alert("Email ou mot de passe incorrect")
     });

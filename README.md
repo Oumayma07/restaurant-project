@@ -49,3 +49,7 @@ Elle permet aux clients de **réserver des tables**, de **laisser des avis**, et
 
 
 
+![res](https://github.com/user-attachments/assets/fc15523d-3515-4b1b-bb01-a6265b7c68b6)
+![res3](https://github.com/user-attachments/assets/10c00412-3cd9-4813-a349-b8bf22a2f89f)
+![res2](https://github.com/user-attachments/assets/780a4f1e-ed5e-46cb-a1c3-f846a4676ad8)
+![res1](https://github.com/user-attachments/assets/d36e3502-4c1e-4782-b9d4-1631ffe09c3f)
